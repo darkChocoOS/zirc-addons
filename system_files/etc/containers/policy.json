@@ -23,7 +23,7 @@
             "ghcr.io/darkchocoos": [
                 {
                     "type": "sigstoreSigned",
-                    "keyPath": "/etc/pki/containers/bootc-template.pub",
+                    "keyPath": "/etc/pki/containers/zirc-addons.pub",
                     "signedIdentity": {
                         "type": "matchRepository"
                     }
