@@ -1,0 +1,6 @@
+cosign.key
+cosign.private
+.secure-files
+_build_*
+output
+_build-*/**
