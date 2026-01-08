@@ -53,7 +53,7 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-a
 # asus linux packages
 dnf -y copr enable lukenukem/asus-linux
 dnf -y copr disable lukenukem/asus-linux
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:lukenukem/asus-linux install \
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:lukenukem:asus-linux install \
   asusctl \
   asusctl-rog-gui \
   supergfxctl

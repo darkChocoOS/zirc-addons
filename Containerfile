@@ -30,7 +30,12 @@ FROM ghcr.io/zirconium-dev/zirconium:latest
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/var \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build/build.sh
+    /ctx/build/01-build.sh
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=tmpfs,dst=/var \
+    --mount=type=tmpfs,dst=/tmp \
+    /ctx/build/02-nvidia.sh
 
 ### LINTING
 # cleanup any changes made to /var and verify final image and contents are correct
