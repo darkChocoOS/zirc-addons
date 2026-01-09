@@ -5,8 +5,6 @@ set -eoux pipefail
 # copy over any added system files to the new image
 cp -avf "/ctx/files"/. /
 
-## installing trivalent
-
 # trivalent
 dnf -y config-manager addrepo --from-repofile=https://repo.secureblue.dev/secureblue.repo
 dnf -y config-manager setopt secureblue.enabled=0
@@ -21,8 +19,6 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 
 # trivalent expects this file to exist because hardened-malloc would generally create it
 touch /etc/ld.so.preload
-
-## HWE features 
 
 # remove old kernel
 for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
@@ -40,7 +36,7 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos i
   kernel-cachyos \
   kernel-cachyos-devel-matched
 
-# install addons
+# install kernel addons
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y copr disable bieszczaders/kernel-cachyos-addons
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap \

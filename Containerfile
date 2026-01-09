@@ -37,6 +37,11 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     /ctx/build/02-nvidia.sh
 
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=tmpfs,dst=/var \
+    --mount=type=tmpfs,dst=/tmp \
+    /ctx/build/99-cleanup.sh
+
 ### LINTING
 # cleanup any changes made to /var and verify final image and contents are correct
 RUN rm -rf /var/* && mkdir /var/tmp && bootc container lint
