@@ -20,26 +20,6 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 # trivalent expects this file to exist because hardened-malloc would generally create it
 touch /etc/ld.so.preload
 
-# remove kernel versionlock
-dnf5 versionlock delete kernel{,-core,-modules,-modules-core,-modules-extra,-tools,-tools-lib,-headers,-devel,-devel-matched}
-
-# remove old kernel
-dnf5 -y remove --no-autoremove kernel kernel-core kernel-modules kernel-modules-core kernel-modules-extra kernel-tools kernel-tools-libs
-
-# disable initramfs generation
-ln -sf /bin/true /usr/lib/kernel/install.d/05-rpmostree.install
-ln -sf /bin/true /usr/lib/kernel/install.d/50-dracut.install
-
-# install cachy kernel
-dnf -y copr enable bieszczaders/kernel-cachyos
-dnf -y copr disable bieszczaders/kernel-cachyos
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos install --allowerasing \
-  kernel-cachyos \
-  kernel-cachyos-devel-matched
-
-# re-add versionlock
-dnf5 versionlock add kernel{,-core,-modules,-modules-core,-modules-extra,-tools,-tools-lib,-headers,-devel,-devel-matched}
-
 # install kernel addons
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y copr disable bieszczaders/kernel-cachyos-addons
