@@ -14,7 +14,7 @@ dnf download --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cac
 
 dnf -y remove --no-autoremove kernel{,-core,-modules,-modules-core,-modules-extra,-tools,-tools-libs}
 
-rpm -u --noscripts --notriggers *.rpm
+rpm -U --noscripts --notriggers *.rpm
 
 popd
 rm -rf "$TMPDIR"
