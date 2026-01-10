@@ -20,7 +20,7 @@ popd
 rm -rf "$TMPDIR"
 
 rpm --rebuilddb
-dnf clean alll
+dnf clean all
 dnf makecache
 dnf check
 dnf -y distro-sync
