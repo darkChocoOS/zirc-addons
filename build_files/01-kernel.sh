@@ -2,7 +2,7 @@
 
 set -eoux pipefail
 
-TMPDIR=$(mktmp -d)
+TMPDIR=$(mktemp -d)
 pushd "$TMPDIR"
 
 dnf -y copr enable bieszczaders/kernel-cachyos
