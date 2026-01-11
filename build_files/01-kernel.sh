@@ -2,27 +2,29 @@
 
 set -eoux pipefail
 
-TMPDIR=$(mktemp -d)
-pushd "$TMPDIR"
+# remove stock kernel
+for pkg in kernel kernel-core kernel-modules kernel-modules-core; do
+  rpm --erase $pkg --nodeps
+done
 
-dnf -y copr enable bieszczaders/kernel-cachyos
-dnf -y copr disable bieszczaders/kernel-cachyos
+# disable initramfs generation by the kernel
+ln -sf /usr/bin/true /usr/lib/kernel/install.d/05-rpmostree.install
+ln -sf /usr/bin/true /usr/lib/kernel/install.d/50-dracut.install
 
-dnf download --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos --arch x86_64 --resolve --destdir "$TMPDIR" \
+# install cachyos kernel
+dnf -y copr enable bieszczaders/kernel-cachyos-addons
+dnf -y copr disable bieszczaders/kernel-cachyos-addons
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos install \
   kernel-cachyos \
   kernel-cachyos-devel-matched
 
-dnf -y remove --no-autoremove kernel{,-core,-modules,-modules-core,-modules-extra,-tools,-tools-libs}
+# install cachyos kernel addons
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap zram-generator-defaults cachyos-settings
+dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
+  scx-scheds-git \
+  scx-manager
 
-rpm -U --noscripts --notriggers *.rpm
-
-popd
-rm -rf "$TMPDIR"
-
-rpm --rebuilddb
-dnf clean all
-dnf makecache
-dnf check
-dnf -y distro-sync
-
-dnf versionlock add kernel-cachyos kernel-cachyos-devel-matched
+# add karg for weird amd-related screen bug
+tee /usr/lib/bootc/kargs.d/01-HWE.toml << 'EOF'
+kargs = ["amdgpu.dcdebugmask=0x10"]
+EOF

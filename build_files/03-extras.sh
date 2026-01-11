@@ -20,16 +20,6 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 # trivalent expects this file to exist because hardened-malloc would generally create it
 touch /etc/ld.so.preload
 
-# install kernel addons
-dnf -y copr enable bieszczaders/kernel-cachyos-addons
-dnf -y copr disable bieszczaders/kernel-cachyos-addons
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap \
-  zram-generator-defaults \
-  cachyos-settings
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
-  scx-scheds-git \
-  scx-manager
-
 # asus linux packages
 dnf -y copr enable lukenukem/asus-linux
 dnf -y copr disable lukenukem/asus-linux
@@ -39,7 +29,3 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:lukenukem:asus-linux install 
   supergfxctl
 systemctl enable supergfxd.service
 
-# kargs
-tee /usr/lib/bootc/kargs.d/01-HWE.toml << 'EOF'
-kargs = ["amdgpu.dcdebugmask=0x10"]
-EOF

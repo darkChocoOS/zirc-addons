@@ -33,14 +33,12 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/build/01-kernel.sh
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
-    --mount=type=tmpfs,dst=/var \
-    --mount=type=tmpfs,dst=/tmp \
-    /ctx/build/02-build.sh
+    /ctx/build/02-nvidia.sh
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/var \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build/03-nvidia.sh
+    /ctx/build/03-extras.sh
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/var \
