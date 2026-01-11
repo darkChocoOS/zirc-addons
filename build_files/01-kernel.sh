@@ -12,13 +12,15 @@ ln -sf /usr/bin/true /usr/lib/kernel/install.d/05-rpmostree.install
 ln -sf /usr/bin/true /usr/lib/kernel/install.d/50-dracut.install
 
 # install cachyos kernel
-dnf -y copr enable bieszczaders/kernel-cachyos-addons
-dnf -y copr disable bieszczaders/kernel-cachyos-addons
+dnf -y copr enable bieszczaders/kernel-cachyos
+dnf -y copr disable bieszczaders/kernel-cachyos
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos install \
   kernel-cachyos \
   kernel-cachyos-devel-matched
 
 # install cachyos kernel addons
+dnf -y copr enable bieszczaders/kernel-cachyos-addons
+dnf -y copr disable bieszczaders/kernel-cachyos-addons
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap zram-generator-defaults cachyos-settings
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
   scx-scheds-git \
