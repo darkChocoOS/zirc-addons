@@ -6,7 +6,7 @@ fi
 
 set -xeuo pipefail
 
-KERNEL_VERSION="$(find "/usr/lib/modules" -maxdepth 1 -type d ! -path "/usr/lib/modules" -exec basename '{}' ';' | sort | tail -n 1)"
+KERNEL_VERSION="$(ls /usr/lib/modules | head -n1)"
 
 dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-nvidia.repo
 dnf config-manager setopt fedora-nvidia.enabled=0
