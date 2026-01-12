@@ -5,6 +5,9 @@ set -eoux pipefail
 # copy over any added system files to the new image
 cp -avf "/ctx/files"/. /
 
+# adw-gtk3
+dnf -y install adw-gtk3-theme
+
 # trivalent
 dnf -y config-manager addrepo --from-repofile=https://repo.secureblue.dev/secureblue.repo
 dnf -y config-manager setopt secureblue.enabled=0
