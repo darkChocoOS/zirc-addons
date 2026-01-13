@@ -5,6 +5,9 @@ set -eoux pipefail
 # copy over any added system files to the new image
 cp -avf "/ctx/files"/. /
 
+# remove cava
+dnf -y remove cava
+
 # adw-gtk3
 dnf -y install adw-gtk3-theme
 
