@@ -22,9 +22,11 @@ dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos i
 dnf -y copr enable bieszczaders/kernel-cachyos-addons
 dnf -y copr disable bieszczaders/kernel-cachyos-addons
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap zram-generator-defaults cachyos-settings
-dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons install \
-  scx-scheds-git \
-  scx-manager
+
+# Remove leftover kernel-devel and clean up sources
+rpm -e kernel-devel
+rpm -e kernel-common
+rm -rf /usr/src/kernels/*
 
 # add karg for weird amd-related screen bug
 tee /usr/lib/bootc/kargs.d/01-HWE.toml << 'EOF'
