@@ -24,8 +24,6 @@ dnf -y copr disable bieszczaders/kernel-cachyos-addons
 dnf -y --enablerepo copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos-addons swap zram-generator-defaults cachyos-settings
 
 # Remove leftover kernel-devel and clean up sources
-rpm -e kernel-devel
-rpm -e kernel-common
 rm -rf /usr/src/kernels/*
 
 # add karg for weird amd-related screen bug
