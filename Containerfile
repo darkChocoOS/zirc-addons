@@ -4,7 +4,7 @@ COPY build_files /build
 COPY system_files /files
 COPY cosign.pub /files/etc/pki/containers/zirc-addons.pub
 
-FROM ghcr.io/zirconium-dev/zirconium:latest
+FROM ghcr.io/zirconium-dev/zirconium-nvidia:latest
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/var \
