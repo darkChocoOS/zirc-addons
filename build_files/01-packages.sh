@@ -27,10 +27,10 @@ dnf install -y --enablerepo=terra \
 systemctl enable supergfxd.service
 
 # replace tuned with ppd
-dnf install -y --allowerasing \
-  power-profiles-daemon
-systemctl enable power-profiles-daemon.service
+# dnf install -y --allowerasing \
+#   power-profiles-daemon
+# systemctl enable power-profiles-daemon.service
 
-powerprofilesctl configure-action amdgpu_panel_power --enable
-echo "1" | tee cat /sys/class/drm/card2/card2-eDP-2/amdgpu/panel_power_savings
-powerprofilesctl configure-action amdgpu_dpm --enable
+# powerprofilesctl configure-action amdgpu_panel_power --enable
+# echo "1" | tee cat /sys/class/drm/card2/card2-eDP-2/amdgpu/panel_power_savings
+# powerprofilesctl configure-action amdgpu_dpm --enable
