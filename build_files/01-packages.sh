@@ -12,7 +12,7 @@ dnf -y config-manager setopt secureblue.enabled=0
 dnf -y install --enablerepo secureblue \
   trivalent
 
-dnf -y copr enable secureblue/trivalent
+dnf -y copr enable secureblue/trivalent fedora-43-x86_64
 dnf -y copr disable secureblue/trivalent
 dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent \
   trivalent-subresource-filter
