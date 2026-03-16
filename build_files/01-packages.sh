@@ -9,7 +9,7 @@ dnf -y install adw-gtk3-theme
 # trivalent
 dnf -y config-manager addrepo --from-repofile=https://repo.secureblue.dev/secureblue.repo
 dnf -y config-manager setopt secureblue.enabled=0
-dnf -y install --enablerepo secureblue \
+dnf -y install --enablerepo secureblue --setopt=install_weak_deps=False\
   trivalent
 
 dnf -y copr enable secureblue/trivalent fedora-43-x86_64
