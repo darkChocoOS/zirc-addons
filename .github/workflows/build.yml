@@ -65,7 +65,14 @@ jobs:
       - name: Rechunk Image
         id: rechunker
         run: |
-          sudo podman run --rm --privileged -v /var/lib/containers:/var/lib/containers --entrypoint /usr/libexec/bootc-base-imagectl "localhost/${IMAGE_NAME}:${DEFAULT_TAG}" rechunk --max-layers 80 "localhost/${IMAGE_NAME}:${DEFAULT_TAG}" "localhost/${IMAGE_NAME}:${DEFAULT_TAG}"
+          sudo podman run --rm \
+            --privileged \
+            -t \
+            -v /var/lib/containers:/var/lib/containers \
+            "quay.io/centos-bootc/centos-bootc:stream10" \
+            /usr/libexec/bootc-base-imagectl rechunk --max-layers 80 \
+            "localhost/${IMAGE_NAME}:${DEFAULT_TAG}" \
+            "localhost/${IMAGE_NAME}:${DEFAULT_TAG}"
 
       # TODO: remove me when we have a new podman in 26.04 runners
       # needed because old podman doesn't push layer annotations for
