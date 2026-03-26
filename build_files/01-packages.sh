@@ -19,11 +19,11 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 
 touch /etc/ld.so.preload
 
-# asus linux packages
 dnf install -y --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
-  supergfxctl
+  supergfxctl \
+  solaar
 systemctl enable supergfxd.service
 
 # replace tuned with ppd
