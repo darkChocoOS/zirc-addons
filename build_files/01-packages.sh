@@ -23,8 +23,7 @@ dnf install -y --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
   supergfxctl \
-  solaar \
-  satty
+  solaar
 systemctl enable supergfxd.service
 
 # replace tuned with ppd
