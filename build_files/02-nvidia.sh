@@ -10,7 +10,8 @@ sed -i '/^enabled=/a\priority=90' /etc/yum.repos.d/fedora-nvidia.repo
 
 dnf -y install \
     gcc-c++ \
-    kernel-devel-matched
+    kernel-devel-matched \
+    terra-release-nvidia
 
 dnf -y install --enablerepo=fedora-nvidia akmod-nvidia
 mkdir -p /var/tmp # for akmods
