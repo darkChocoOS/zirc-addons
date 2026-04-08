@@ -23,8 +23,16 @@ cat /var/cache/akmods/nvidia/*.failed.log || true
 dnf -y install --enablerepo=fedora-nvidia \
     nvidia-driver-cuda libnvidia-fbc libva-nvidia-driver nvidia-driver nvidia-modprobe nvidia-persistenced nvidia-settings
 
-dnf -y install --enablerepo=terra-nvidia \
+dnf config-manager addrepo --from-repofile=https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo
+dnf config-manager setopt nvidia-container-toolkit.enabled=0
+dnf config-manager setopt nvidia-container-toolkit.gpgcheck=1
+
+dnf -y install --enablerepo=nvidia-container-toolkit \
     nvidia-container-toolkit
+
+curl --retry 3 -L https://raw.githubusercontent.com/NVIDIA/dgx-selinux/master/bin/RHEL9/nvidia-container.pp -o nvidia-container.pp
+semodule -i nvidia-container.pp
+rm -f nvidia-container.pp
 
 tee /usr/lib/modprobe.d/00-nouveau-blacklist.conf <<'EOF'
 blacklist nouveau
