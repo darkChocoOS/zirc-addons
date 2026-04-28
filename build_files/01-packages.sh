@@ -30,4 +30,8 @@ systemctl enable supergfxd.service
 # proton
 dnf -y install https://repo.protonvpn.com/fedora-44-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm
 
-dnf -y  install proton-vpn-gnome-desktop
+mkdir -p /var/tmp
+chmod 1777 /var/tmp
+
+dnf download proton-vpn-gnome-desktop --repo=protonvpn-fedora-stable "--arch=noarch" "--destdir=/var/tmp"
+rpm -i proton-vpn-gnome-desktop --noscripts
