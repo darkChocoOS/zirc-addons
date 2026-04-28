@@ -19,6 +19,7 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 
 touch /etc/ld.so.preload
 
+# HWE
 dnf install -y --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
@@ -26,11 +27,7 @@ dnf install -y --enablerepo=terra \
   solaar
 systemctl enable supergfxd.service
 
-# replace tuned with ppd
-# dnf install -y --allowerasing \
-#   power-profiles-daemon
-# systemctl enable power-profiles-daemon.service
+# proton
+dnf -y install https://repo.protonvpn.com/fedora-44-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm
 
-# powerprofilesctl configure-action amdgpu_panel_power --enable
-# echo "1" | tee cat /sys/class/drm/card2/card2-eDP-2/amdgpu/panel_power_savings
-# powerprofilesctl configure-action amdgpu_dpm --enable
+sudo dnf install proton-vpn-gnome-desktop
