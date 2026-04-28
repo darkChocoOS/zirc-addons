@@ -34,4 +34,4 @@ mkdir -p /var/tmp
 chmod 1777 /var/tmp
 
 dnf download proton-vpn-gnome-desktop --repo=protonvpn-fedora-stable "--arch=noarch" "--destdir=/var/tmp"
-rpm -i proton-vpn-gnome-desktop --noscripts
+rpm -i "/var/tmp/*proton-vpn-gnome-desktop*.rpm" --noscripts
