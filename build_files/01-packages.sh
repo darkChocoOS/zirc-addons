@@ -35,6 +35,7 @@ chmod 1777 /var/tmp
 
 dnf download proton-vpn-gnome-desktop proton-vpn-daemon --repo=protonvpn-fedora-stable "--arch=noarch" "--destdir=/var/tmp"
 dnf -y install proton-vpn-gtk-app python3-proton-keyring-linux python3-proton-vpn-api-core
+dnf -y install python3-bcc python3-dbus-fast python3-systemd
 
 rpm -i "/var/tmp/*proton-vpn-daemon*.rpm" --noscripts
 rpm -i "/var/tmp/*proton-vpn-gnome-desktop*.rpm" --noscripts
