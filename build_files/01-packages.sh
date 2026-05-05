@@ -28,7 +28,7 @@ dnf install -y --enablerepo=terra \
 systemctl enable supergfxd.service
 
 # proton
-dnf -y install https://repo.protonvpn.com/fedora-44-stable/protonvpn-stable-release/protonvpn-stable-release-1.0.3-1.noarch.rpm
+dnf -y install https://repo.protonvpn.com/fedora-44-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.4-1.noarch.rpm
 
 mkdir -p /var/tmp
 chmod 1777 /var/tmp
