@@ -33,7 +33,7 @@ dnf -y install https://repo.protonvpn.com/fedora-44-unstable/protonvpn-beta-rele
 mkdir -p /var/tmp
 chmod 1777 /var/tmp
 
-dnf download proton-vpn-gnome-desktop proton-vpn-daemon --repo=protonvpn-fedora-stable "--arch=noarch" "--destdir=/var/tmp"
+dnf download proton-vpn-gnome-desktop proton-vpn-daemon --repo=protonvpn-fedora-unstable "--arch=noarch" "--destdir=/var/tmp"
 dnf -y install proton-vpn-gtk-app python3-proton-keyring-linux python3-proton-vpn-api-core
 dnf -y install python3-bcc python3-dbus-fast python3-systemd
 
