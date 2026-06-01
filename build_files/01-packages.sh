@@ -23,9 +23,9 @@ touch /etc/ld.so.preload
 dnf install -y --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
-  supergfxctl \
+  cardwire \
   solaar
-systemctl enable supergfxd.service
+systemctl enable cardwired.service
 
 # proton
 dnf -y install https://repo.protonvpn.com/fedora-44-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.4-1.noarch.rpm
