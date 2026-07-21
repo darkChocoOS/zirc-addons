@@ -20,7 +20,7 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 touch /etc/ld.so.preload
 
 # HWE
-dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
+dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y config-manager setopt terra.enabled=0
 dnf install -y --enablerepo=terra \
   asusctl \
