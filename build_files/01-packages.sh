@@ -22,12 +22,16 @@ touch /etc/ld.so.preload
 # HWE
 dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y config-manager setopt terra.enabled=0
-dnf install -y --enablerepo=terra \
+dnf -y install --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
   cardwire \
   solaar
 systemctl enable cardwired.service
+
+# vesktop
+dnf -y install --enablerepo=terra \
+  vesktop
 
 # proton
 dnf -y install https://repo.protonvpn.com/fedora-44-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.4-1.noarch.rpm
@@ -41,3 +45,5 @@ dnf -y install python3-bcc python3-dbus-fast python3-systemd
 
 rpm -i "/var/tmp/*proton-vpn-daemon*.rpm" --noscripts
 rpm -i "/var/tmp/*proton-vpn-gnome-desktop*.rpm" --noscripts
+
+systemctl enable me.proton.vpn.split_tunneling.service
