@@ -20,8 +20,11 @@ dnf -y install --enablerepo copr:copr.fedorainfracloud.org:secureblue:trivalent 
 touch /etc/ld.so.preload
 
 # HWE
+
 dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y config-manager setopt terra.enabled=0
+
+dnf -y remove switcheroo-control
 dnf -y install --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
@@ -31,7 +34,7 @@ systemctl enable cardwired.service
 
 # vesktop
 dnf -y install --enablerepo=terra \
-  vesktop
+  equibop
 
 # proton
 dnf -y install https://repo.protonvpn.com/fedora-44-unstable/protonvpn-beta-release/protonvpn-beta-release-1.0.4-1.noarch.rpm
