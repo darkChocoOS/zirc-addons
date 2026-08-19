@@ -29,6 +29,7 @@ dnf -y install --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
   cardwire \
+  cardwire-gui \
   solaar
 systemctl enable cardwired.service
 
