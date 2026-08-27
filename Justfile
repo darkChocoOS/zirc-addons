@@ -136,7 +136,7 @@ rechunk $target_image=image_name $tag=default_tag:
     -e CHUNKAH_CONFIG_STR quay.io/coreos/chunkah:latest \
     build \
     --compressed \
-    --max-layers 128 \
+    --max-layers 256 \
     --prune /sysroot/ \
     --label ostree.commit- --label ostree.final-diffid- \
     --tag "${target_image}:${tag}" | podman load
