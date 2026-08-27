@@ -24,12 +24,9 @@ touch /etc/ld.so.preload
 dnf -y install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 dnf -y config-manager setopt terra.enabled=0
 
-dnf -y remove switcheroo-control
 dnf -y install --enablerepo=terra \
   asusctl \
   asusctl-rog-gui \
-  cardwire \
-  cardwire-gui \
   solaar
 systemctl enable cardwired.service
 
