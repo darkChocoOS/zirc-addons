@@ -6,10 +6,17 @@ cp -avf "/ctx/files"/. /
 
 dnf -y install adw-gtk3-theme
 
+# dms git
+dnf -y copr enable avengemedia/dms-git
+dnf -y copr disable avengemedia/dms-git
+dnf -y remove dms
+dnf -y install --enablerepo copr:copr.fedorainfracloud.org:avengemedia:dms-git \
+  dms
+
 # trivalent
 dnf -y config-manager addrepo --from-repofile=https://repo.secureblue.dev/secureblue.repo
 dnf -y config-manager setopt secureblue.enabled=0
-dnf -y install --enablerepo secureblue --setopt=install_weak_deps=False\
+dnf -y install --enablerepo secureblue --setopt=install_weak_deps=False \
   trivalent
 
 dnf -y copr enable secureblue/trivalent fedora-44-x86_64
