@@ -52,6 +52,7 @@ dnf -y install proton-vpn-gtk-app python3-proton-keyring-linux python3-proton-vp
 dnf -y install python3-bcc python3-dbus-fast python3-systemd
 
 rpm -i "/var/tmp/*proton-vpn-daemon*.rpm" --noscripts
+dnf -y install proton-vpn-cli
 rpm -i "/var/tmp/*proton-vpn-gnome-desktop*.rpm" --noscripts
 
 systemctl enable me.proton.vpn.split_tunneling.service
